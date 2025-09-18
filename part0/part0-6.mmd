@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+
+
+    Note right of browser: – – – EXERCISE PART 0.6 – – –
+    Note right of browser: The user writes a new note in the form: "Consectetur adipiscing elit"
+    Note right of browser: The user hits 'Save' button
+    
+
+    activate browser
+    browser->>server: POST https://studies.cs.helsinki.fi/new_note_spa
+    Note right of browser: The browser add note to data.json (note, date)
+    Note right of browser: The browser updates HTML document displaying new note
+    deactivate browser    
+    activate server
+
+
+
+    activate server
+    server -->> browser: server confirmation (201) "note created"
+    deactivate server
+
+
+

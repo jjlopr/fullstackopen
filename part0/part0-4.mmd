@@ -1,0 +1,82 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/note
+    activate server
+    server-->>browser: HTML document
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: the css file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server-->>browser: the JavaScript file
+    deactivate server
+    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
+    deactivate server
+
+    Note right of browser: The browser executes the callback function that renders the notes
+
+    browser->>server: GET https://joko-mobile-app-media ... asset.png
+    activate server
+    server-->>browser: the PNG image
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/favicon.ico
+    activate server
+    server --x browser: favicon.ico  (404) Not Found
+    deactivate server
+
+    Note right of browser: – – – EXERCISE PART 0.4 – – –
+    Note right of browser: The user writes a new note in the form: "Lorem ipsum dolor"
+    Note right of browser: The user hits 'Save' button
+
+    browser->>server: POST https://studies.cs.helsinki.fi/new_note
+    activate server
+    Note left of server: Creates new note (note, date) in data.json
+    server -->> browser: redirect HTML document https://studies.cs.helsinki.fi/notes 
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server -->> browser:  the css file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server -->> browser:  the JavaScript file
+    deactivate server
+    Note right of browser: The browser starts executing the JS code that fetches the updated JSON from the server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server -->> browser:  the JavaScript file
+    deactivate server
+
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: [{ "content": "New first note", "date": "2023-1-2" }, ... ]
+    deactivate server
+    Note right of browser: The browser executes the callback function that render the new notes
+
+
+
+    browser->>server: GET https://joko-mobile-app-media ... asset.png
+    activate server
+    server-->>browser: the PNG image
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/favicon.ico
+    activate server
+    server --x browser: favicon.ico  (404) Not Found
+    deactivate server
+
