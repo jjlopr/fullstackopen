@@ -48,11 +48,8 @@ const Content = (props) => {
   )
 }
 
-// Using props
-const Part = (props) => {
-  const name = props.name
-  const exercises = props.exercises
-
+// Using Destructuring
+const Part = ({ name, exercises }) => {
   return (
     <p>{name}, <i>{exercises} exercises</i></p>
   )
