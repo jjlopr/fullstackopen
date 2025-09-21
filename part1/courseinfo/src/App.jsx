@@ -37,23 +37,23 @@ const Header = (props) => {
   )
 }
 
+// Independent Content and Part components 
 const Content = (props) => {
-  
-  const Part = () => {
   return (
-    <>
-    <p>{props.part1}, {props.exercises1} exercises</p>
-    <p>{props.part2}, {props.exercises2} exercises</p>
-    <p>{props.part3}, {props.exercises3} exercises</p>
-    </>
+    <div>
+      <Part name={props.part1} exercises={props.exercises1} />
+      <Part name={props.part2} exercises={props.exercises2} />
+      <Part name={props.part3} exercises={props.exercises3} />
+    </div>
   )
-  }
+}
 
-  
+const Part = (props) => {
+  const name = props.name
+  const exercises = props.exercises
+
   return (
-    <>
-      <Part />
-    </>
+    <p>{name}, <i>{exercises} exercises</i></p>
   )
 }
 
