@@ -2,7 +2,7 @@ const Hello = (props) => {
 
   console.log(props)
   return (
-    <div> {/* 👈 This is the root element that wrapps everything */}
+    <div> {/* 👈 This is the root element that wraps everything */}
       <p>
 
         Hello {props.name}, you are {props.age} years old
