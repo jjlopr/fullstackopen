@@ -48,6 +48,7 @@ const Content = (props) => {
   )
 }
 
+// Using props
 const Part = (props) => {
   const name = props.name
   const exercises = props.exercises
