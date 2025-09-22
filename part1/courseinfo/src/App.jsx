@@ -15,25 +15,15 @@ const App = () => {
     }
   ]
 
-  // Exercise 1.4 Changing pointers to parts Array
+  // Exercise 1.4 Sending the entire parts Array as a single prop
+  // Instead of breaking it down into individual properties
   return (
     <div>
-      <Header course={course}/>
+      <Header course={course} />
 
-      <Content 
-        part1={parts[0].name}
-        part2={parts[1].name}
-        part3={parts[2].name}
-        exercises1={parts[0].exercises} 
-        exercises2={parts[1].exercises} 
-        exercises3={parts[2].exercises} 
-      />
+      <Content parts={parts} />
       
-      <Total 
-        exercises1={parts[0].exercises} 
-        exercises2={parts[1].exercises} 
-        exercises3={parts[2].exercises} 
-      />
+      <Total parts={parts} />
     </div>
   )
 }
@@ -53,9 +43,9 @@ const Content = (props) => {
   
   return (
     <div>
-      <Part namex={props.part1} exercisex={props.exercises1} />
-      <Part namex={props.part2} exercisex={props.exercises2} />
-      <Part namex={props.part3} exercisex={props.exercises3} />
+      <Part namex={props.parts[0].name} exercisex={props.parts[0].exercises} />
+      <Part namex={props.parts[1].name} exercisex={props.parts[1].exercises} />
+      <Part namex={props.parts[2].name} exercisex={props.parts[2].exercises} />
     </div>
   )
 }
@@ -67,7 +57,7 @@ const Part = ({ namex, exercisex }) => {
 }
 
 const Total = (props) => {
-  const total = props.exercises1 + props.exercises2 + props.exercises3
+  const total = props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises
   console.log(props)
   
   return (
