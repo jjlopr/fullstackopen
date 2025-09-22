@@ -26,11 +26,11 @@ const App = () => {
         exercises3={part3.exercises} 
       />
       
-      {/* <Total 
-        exercises1={exercises1} 
-        exercises2={exercises2} 
-        exercises3={exercises3} 
-      /> */}
+      <Total 
+        exercises1={part1.exercises} 
+        exercises2={part2.exercises} 
+        exercises3={part3.exercises} 
+      />
     </div>
   )
 }
@@ -45,7 +45,6 @@ const Header = (props) => {
   )
 }
 
-// Exercise 1.2 – Independent Part & Content components 
 const Content = (props) => {
   console.log(props)
   
@@ -58,23 +57,22 @@ const Content = (props) => {
   )
 }
 
-// Using Destructuring
 const Part = ({ namex, exercisex }) => {
   return (
     <p>{namex}, <i>{exercisex} exercises</i></p>
   )
 }
 
-// const Total = (props) => {
-//   const total = props.exercises1 + props.exercises2 + props.exercises3
-//   console.log(props)
+const Total = (props) => {
+  const total = props.exercises1 + props.exercises2 + props.exercises3
+  console.log(props)
   
-//   return (
-//     <footer>
-//       <i>Total exercises: {total}</i>
-//     </footer>
-//   )
-// }
+  return (
+    <footer>
+      <i>Total exercises: {total}</i>
+    </footer>
+  )
+}
 
 
 export default App
