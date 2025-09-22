@@ -37,7 +37,7 @@ const Header = (props) => {
   )
 }
 
-// Independent Content and Part components 
+// Exercise 1.2 – Independent Part & Content components 
 const Content = (props) => {
   return (
     <div>
