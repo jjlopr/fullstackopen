@@ -1,4 +1,3 @@
-// Part 1 - c. Component State, event handlers
 const Hello = (props) => {
   return (
     <div>
@@ -21,5 +20,4 @@ const App = () => {
     </div>
   )
 }
-
 export default App
