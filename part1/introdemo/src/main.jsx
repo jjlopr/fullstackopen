@@ -11,9 +11,8 @@ const refresh = () => {
     <App counter={counter} />
   )
 }
-
-refresh()
-counter += 1
-refresh()
-counter += 1
-refresh()
+// setInterval https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval
+setInterval(() => {
+  refresh()
+  counter += 1
+}, 1000)
