@@ -1,4 +1,4 @@
-// Part 1.c – Destructuring Display and Button components
+// Part 1.c – Destructuring the Button comp including disabled
 import { useState } from 'react'
 
 const App = () => {
@@ -25,7 +25,11 @@ const App = () => {
   //   </button>
   //   )
   // }
-  const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
+  const Button = ({onClick, text, disabled}) => (
+    <button onClick={onClick} disabled={disabled}>
+      {text}
+    </button>
+  )
 
   return (
     <div>
