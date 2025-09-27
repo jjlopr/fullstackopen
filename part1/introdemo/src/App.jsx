@@ -1,42 +1,20 @@
-// Part 1.c – Destructuring the Button comp including disabled
+// Part 1.d – Left v Right App (Complex State `useState`)
 import { useState } from 'react'
 
 const App = () => {
-  const [ counter, setCounter ] = useState(0)
-
-  const increaseByOne = () => setCounter(counter + 1)
-  const decreaseByOne = () => setCounter(counter - 1)  
-  const setToZero = () => setCounter(0)
-
-  // The function contains only the return statement
-  // So we can use the compact form of arrow functions
-  // const Display = (props) => {
-  // return (
-  //   <div>{props.counter}</div>
-  //   )
-  // }
-  const Display =({counter}) => <div>{counter}</div>
-
-  // We can simplify the Button as well
-  // const Button = (props) => {
-  // return (
-  //   <button onClick={props.onClick} disabled={props.disabled}>
-  //     {props.text}
-  //   </button>
-  //   )
-  // }
-  const Button = ({onClick, text, disabled}) => (
-    <button onClick={onClick} disabled={disabled}>
-      {text}
-    </button>
-  )
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0)
 
   return (
     <div>
-      <Display counter={counter} />
-      <Button onClick={increaseByOne} text='plus' />
-      <Button onClick={setToZero} text='zero' disabled={counter === 0} />
-      <Button onClick={decreaseByOne} text='minus' />
+      {left}
+      <button onClick={() => setLeft(left + 1)}>
+        left
+      </button>
+      <button onClick={() => setRight(right + 1)}>
+        right
+      </button>
+      {right}
     </div>
   )
 }
