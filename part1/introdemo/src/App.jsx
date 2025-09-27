@@ -1,4 +1,4 @@
-// Part 1.c – Refactor to small reusable components
+// Part 1.c – Back to declaring Display (props) comp
 import { useState } from 'react'
 
 const App = () => {
@@ -8,6 +8,11 @@ const App = () => {
   const decreaseByOne = () => setCounter(counter - 1)  
   const setToZero = () => setCounter(0)
 
+  const Display = (props) => {
+  return (
+    <div>{props.counter}</div>
+    )
+  }
 
   const Button = (props) => {
   return (
@@ -19,7 +24,7 @@ const App = () => {
 
   return (
     <div>
-      <div>{counter}</div>
+      <Display counter={counter} />
       <Button onClick={increaseByOne} text='plus' />
       <Button onClick={setToZero} text='zero' disabled={counter === 0} />
       <Button onClick={decreaseByOne} text='minus' />
