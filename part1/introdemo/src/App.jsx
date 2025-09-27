@@ -9,12 +9,6 @@ const App = () => {
   const setToZero = () => setCounter(0)
 
 
-  // const Display = (props) => {
-  // return (
-  //   <div>{props.counter}</div>
-  //   )
-  // }
-
   const Button = (props) => {
   return (
     <button onClick={props.onClick} disabled={props.disabled}>
@@ -23,16 +17,15 @@ const App = () => {
     )
   }
 
-
   return (
     <div>
       <div>{counter}</div>
-      {/* <Display counter={counter}/>      */}
       <Button onClick={increaseByOne} text='plus' />
       <Button onClick={setToZero} text='zero' disabled={counter === 0} />
       <Button onClick={decreaseByOne} text='minus' />
     </div>
   )
 }
+
 
 export default App
