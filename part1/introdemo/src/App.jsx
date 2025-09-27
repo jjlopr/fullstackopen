@@ -1,4 +1,4 @@
-// Part 1.d – Object spread syntax (...)
+// Part 1.d – Simplify the functions avoiding variable assignation
 import { useState } from 'react'
 
 const App = () => {
@@ -6,21 +6,27 @@ const App = () => {
 		left: 0, right: 0
 	})
 	
-	const handleLeftClick = () => {
-		const newClicks = {
-			...clicks,
-			left: clicks + 1
-		}
-		setClicks(newClicks)
-	}
-	
-	const handleRightClick = () => {
-		const newClicks = {
-			...clicks,
-			right: clicks.right + 1
-		}
-		setClicks(newClicks)
-	}
+  // Assigning the object to a variable in the event handlers is not necessary
+	// const handleLeftClick = () => {
+	// 	const newClicks = {
+	// 		...clicks,
+	// 		left: clicks + 1
+	// 	}
+	// 	setClicks(newClicks)
+	// }
+	const handleLeftClick = () =>
+  setClicks({ ...clicks, left: clicks.left + 1 })
+
+  // Assigning the object to a variable in the event handlers is not necessary
+	// const handleRightClick = () => {
+	// 	const newClicks = {
+	// 		...clicks,
+	// 		right: clicks.right + 1
+	// 	}
+	// 	setClicks(newClicks)
+	// }
+  const handleRightClick = () =>
+  setClicks({ ...clicks, right: clicks.right + 1 })
 	
 	return (
 		<div>
