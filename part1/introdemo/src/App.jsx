@@ -1,4 +1,4 @@
-// Part 1.d – Removed console control for debug
+// Part 1.d – Conditional rendering (History comp if/else)
 import { useState } from 'react'
 
 const App = () => {
@@ -8,21 +8,35 @@ const App = () => {
   
   const [allClicks, setAll] = useState([])
   const [total, setTotal] = useState(0)
-	
+  
+  // Make the rendering of the clicking history is handled by a new History comp
+  const History = (props) => {
+    if (props.allClicks.length === 0) {
+      return (
+        <div>
+          Press 'left' or 'right' button to start
+        </div>
+      )
+    }
+    return (
+      <div>
+        Button press history: {props.allClicks.join('-')}
+      </div>
+    )
+  }
 
   const handleLeftClick = () => {
     setAll(allClicks.concat('L'))
-    const updatedLeft = left + 1              // Avoid asynchronously update
+    const updatedLeft = left + 1
     setLeft(updatedLeft)
     setTotal(updatedLeft + right)
   }
 
   const handleRightClick = () => {
     setAll(allClicks.concat('R'))
-    const updatedRight = right + 1            // Avoid asynchronously update
+    const updatedRight = right + 1
     setRight(updatedRight)
     setTotal(left + updatedRight)
-
   }
 
   const handleReset = () => {
@@ -39,7 +53,8 @@ const App = () => {
 			<button onClick={handleRightClick}>right</button>
 	    {right}
       <button onClick={handleReset} disabled={left === 0 && right === 0}>reset</button>
-      <p>{allClicks.join('-')}</p>
+      <br></br><br></br>
+      <History allClicks={allClicks} />
       <p>Total {total}</p>
 		</div>
 	)
