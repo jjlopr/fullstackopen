@@ -1,4 +1,4 @@
-// Part 1.d – New comp updateLeft to avoid asynch
+// Part 1.d – Removed console control for debug
 import { useState } from 'react'
 
 const App = () => {
@@ -12,19 +12,15 @@ const App = () => {
 
   const handleLeftClick = () => {
     setAll(allClicks.concat('L'))
-    console.log('Left antes:', left)          // <-- Control en console L
     const updatedLeft = left + 1              // Avoid asynchronously update
     setLeft(updatedLeft)
-    console.log('Left after:', updatedLeft)   // <-- Control en console L
     setTotal(updatedLeft + right)
   }
 
   const handleRightClick = () => {
     setAll(allClicks.concat('R'))
-    console.log('Right antes:', right)        // <-- Control en console R
     const updatedRight = right + 1            // Avoid asynchronously update
     setRight(updatedRight)
-    console.log('Right after:', updatedRight) // <-- Control en console R
     setTotal(left + updatedRight)
 
   }
