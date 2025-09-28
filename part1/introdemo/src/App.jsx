@@ -1,5 +1,23 @@
-// Part 1.d – Conditional rendering (History comp if/else)
+// Part 1.d – History & Button comp outisde App scope
 import { useState } from 'react'
+
+// History comp outside App
+const History = (props) => {
+  if (props.allClicks.length === 0) {
+    return (
+      <div>
+        Press 'left' or 'right' button to start
+      </div>
+    )
+  }
+return (
+  <div>
+    Button press history: {props.allClicks.join('-')}
+  </div>
+  )
+}
+
+const Button = ({onClick, texto}) => <button onClick={onClick}>{texto}</button>
 
 const App = () => {
 
@@ -9,22 +27,6 @@ const App = () => {
   const [allClicks, setAll] = useState([])
   const [total, setTotal] = useState(0)
   
-  // Make the rendering of the clicking history is handled by a new History comp
-  const History = (props) => {
-    if (props.allClicks.length === 0) {
-      return (
-        <div>
-          Press 'left' or 'right' button to start
-        </div>
-      )
-    }
-    return (
-      <div>
-        Button press history: {props.allClicks.join('-')}
-      </div>
-    )
-  }
-
   const handleLeftClick = () => {
     setAll(allClicks.concat('L'))
     const updatedLeft = left + 1
@@ -48,11 +50,15 @@ const App = () => {
 	
 	return (
 		<div>
+			
 			{left}
-			<button onClick={handleLeftClick}>left</button>
-			<button onClick={handleRightClick}>right</button>
-	    {right}
-      <button onClick={handleReset} disabled={left === 0 && right === 0}>reset</button>
+      {/* <button onClick={handleLeftClick}>left</button>
+			<button onClick={handleRightClick}>right</button> */}
+      <Button onClick={handleLeftClick} texto="Left"/>
+      <Button onClick={handleRightClick} texto="Right"/>
+      {right}
+      {/* <button onClick={handleReset} disabled={left === 0 && right === 0}>reset</button> */}
+      <Button onClick={handleReset} texto="Reset" />
       <br></br><br></br>
       <History allClicks={allClicks} />
       <p>Total {total}</p>
