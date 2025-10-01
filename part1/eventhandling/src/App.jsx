@@ -3,11 +3,16 @@ import { useState } from 'react'
 const App = () => {
   const [value, setValue] = useState(10)
 
+  const handleClick = () => {
+    console.log('--- Clicked ---')        // Control in console
+    setValue(0)
+  }
+
   return (
     <div>
       {value}
       <button 
-        onClick={() => setValue(0)}
+        onClick={handleClick}
         disabled={value === 0}
       >reset</button>
     </div>
@@ -16,10 +21,4 @@ const App = () => {
 
 
 export default App
-
-
-
-// DO NOT DO THIS !
-
-// <button onClick={setValue(0)}>button</button>
 
