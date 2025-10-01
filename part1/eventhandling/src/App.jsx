@@ -3,11 +3,10 @@ import { useState } from 'react'
 const App = () => {
 	const [value, setValue] = useState(10)
 
-  // Eliminate the helper variables and directly return the created function
-  const hello = (who) => {
-    return () => {
+  // Omit the {} as hello funct has a single return
+  const hello = (who) =>
+    () => {
       console.log('hello', who)
-    }
   }
 
 	return (
