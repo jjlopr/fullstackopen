@@ -1,8 +1,8 @@
-// Part 1.d – History & Button comp outisde App scope
+// Part 1.d – Inside vs Outside App Scope
 import { useState } from 'react'
 
-// OUTSIDE App :
-// Component definitions, Reusable UI comp
+// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+
 const History = (props) => {
   if (props.allClicks.length === 0) {
     return (
@@ -20,8 +20,7 @@ return (
 
 const Button = ({onClick, texto, disabled}) => <button onClick={onClick} disabled={disabled}>{texto}</button>
 
-// INSIDE App :
-// Event handlers, State variables, Any logic that needs access to comp state
+// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
 const App = () => {
   const [left, setLeft] = useState(0)
   const [right, setRight] = useState(0)
@@ -42,7 +41,6 @@ const App = () => {
     setRight(updatedRight)
     setTotal(left + updatedRight)
   }
-  // This MUST stay inside because it needs access to state setters
   const handleReset = () => {
     setAll([])      // ← Needs access to setAll
     setRight(0)     // ← Needs access to setRight
@@ -53,12 +51,9 @@ const App = () => {
 	return (
 		<div>
 			{left}
-      {/* <button onClick={handleLeftClick}>left</button>
-			<button onClick={handleRightClick}>right</button> */}
       <Button onClick={handleLeftClick} texto="Left"/>
       <Button onClick={handleRightClick} texto="Right"/>
       {right}
-      {/* <button onClick={handleReset} disabled={left === 0 && right === 0}>reset</button> */}
       <Button onClick={handleReset} disabled={left === 0 && right === 0} texto="Reset" />
       <br></br><br></br>
       <History allClicks={allClicks} />
