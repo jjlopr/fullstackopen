@@ -3,14 +3,16 @@ import { useState } from 'react'
 const App = () => {
 	const [value, setValue] = useState(10)
 
-	const hello = () => {    
-		const handler = () => console.log('hello world')    
+	const hello = (who) => {    
+		const handler = () => console.log('hola', who)    
 			return handler  
 		}
 	return (
     <div>
       {value}
-      <button onClick={hello()}>button</button>
+      <button onClick={hello('world')}>button</button>
+      <button onClick={hello('react')}>button</button>
+      <button onClick={hello('function')}>button</button>
     </div>
   )
 }
