@@ -1,20 +1,16 @@
 import { useState } from 'react'
 
 const App = () => {
-  const [value, setValue] = useState(10)
+	const [value, setValue] = useState(10)
 
-  const handleClick = () => {
-    console.log('--- Clicked ---')        // Control in console
-    setValue(0)
-  }
-
-  return (
+	const hello = () => {    
+		const handler = () => console.log('hello world')    
+			return handler  
+		}
+	return (
     <div>
       {value}
-      <button 
-        onClick={handleClick}
-        disabled={value === 0}
-      >reset</button>
+      <button onClick={hello()}>button</button>
     </div>
   )
 }
