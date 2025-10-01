@@ -3,9 +3,8 @@ import { useState } from 'react'
 const App = () => {
 	const [value, setValue] = useState(10)
 
-  // Omit the {} as hello funct has a single return
-  const hello = (who) =>
-    () => {
+  // Write all of the arrows on the same line
+  const hello = (who) => () => {
       console.log('hello', who)
   }
 
